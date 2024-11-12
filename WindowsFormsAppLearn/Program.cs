@@ -14,6 +14,7 @@ namespace WindowsFormsAppLearn
         [STAThread]
         static void Main()
         {
+            //main
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());
