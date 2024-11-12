@@ -48,7 +48,8 @@ namespace WindowsFormsAppLearn
             SqlDataReader reader=cmd.ExecuteReader();
             if (reader.Read())
             {
-                MessageBox.Show("login successful!");       
+               new frmDashboard().Show();
+               this.Hide();
             }
             else {
                 MessageBox.Show("Please enter valid details...");
