@@ -1,24 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsAppLearn
 {
     public partial class frmLogin : Form
     {
-       // Database Connection
-        SqlConnection con=new DBConnection().getDBConnection();
+        // Database Connection
+        SqlConnection con = new DBConnection().getDBConnection();
 
         public frmLogin()
         {
             InitializeComponent();
+        }
+
+        //Validating all the feilds - confirms no empty feilds
+        private bool isValidAll()
+        {
+            if (txtUsername.Text == "" || txtPassword.Text == "") return false;
+            return true;
+
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
@@ -38,23 +39,32 @@ namespace WindowsFormsAppLearn
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string username = txtUsername.Text;
-            string password = new Encrypt().encryptData(txtPassword.Text);
-            SqlCommand cmd = new SqlCommand("select 1 from Login where username=@UN and password=@PW", con);
-            cmd.Parameters.AddWithValue("@UN", username);
-            cmd.Parameters.AddWithValue("@PW",password);
-           
-            SqlDataReader reader=cmd.ExecuteReader();
-            if (reader.Read())
+            if (isValidAll())
             {
-               new frmDashboard().Show();
-               this.Hide();
+                con.Open();
+                string username = txtUsername.Text;
+                string password = new Encrypt().encryptData(txtPassword.Text);
+                SqlCommand cmd = new SqlCommand("select 1 from Login where username=@UN and password=@PW", con);
+                cmd.Parameters.AddWithValue("@UN", username);
+                cmd.Parameters.AddWithValue("@PW", password);
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    new frmDashboard().Show();
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter valid user credentials...");
+                }
+                con.Close();
             }
-            else {
-                MessageBox.Show("Please enter valid details...");
+            else
+            {
+                MessageBox.Show("Fill all Required Feilds!.", "Validation Error",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            con.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -64,23 +74,32 @@ namespace WindowsFormsAppLearn
 
         private void btnSignup_Click(object sender, EventArgs e)
         {
-            con.Open();
-            string username = txtUsername.Text;
-            string password = new Encrypt().encryptData(txtPassword.Text);
-            SqlCommand cmd = new SqlCommand("insert into Login (username,password) select @UN, @PW where not exists (select username from Login where username=@UN)", con);
-
-            cmd.Parameters.AddWithValue("@UN", username);
-            cmd.Parameters.AddWithValue("@PW", password);
-            int result=cmd.ExecuteNonQuery();
-
-            if (result == 0)
+            if (isValidAll())
             {
-                MessageBox.Show("user already exists.");
+                con.Open();
+                string username = txtUsername.Text;
+                string password = new Encrypt().encryptData(txtPassword.Text);
+                SqlCommand cmd = new SqlCommand("insert into Login (username,password) select @UN, @PW where not exists (select username from Login where username=@UN)", con);
+
+                cmd.Parameters.AddWithValue("@UN", username);
+                cmd.Parameters.AddWithValue("@PW", password);
+                int result = cmd.ExecuteNonQuery();
+
+                if (result == 0)
+                {
+                    MessageBox.Show("user already exists.");
+                }
+                else
+                {
+                    MessageBox.Show("Signup successful");
+                }
+                con.Close();
             }
-            else {
-                MessageBox.Show("Signup successful");
+            else
+            {
+                MessageBox.Show("Fill all Required Feilds!.", "Validation Error",
+            MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            con.Close();
         }
     }
 }

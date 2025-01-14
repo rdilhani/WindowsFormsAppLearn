@@ -65,16 +65,18 @@
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlLeft.Name = "pnlLeft";
-            this.pnlLeft.Size = new System.Drawing.Size(226, 631);
+            this.pnlLeft.Size = new System.Drawing.Size(226, 679);
             this.pnlLeft.TabIndex = 0;
             // 
             // btnExit
             // 
-            this.btnExit.BackColor = System.Drawing.Color.LightSlateGray;
+            this.btnExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnExit.Location = new System.Drawing.Point(20, 582);
+            this.btnExit.Location = new System.Drawing.Point(0, 623);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(183, 30);
+            this.btnExit.Size = new System.Drawing.Size(222, 52);
             this.btnExit.TabIndex = 4;
             this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = false;
@@ -231,9 +233,9 @@
             this.pnlBottom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.pnlBottom.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pnlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBottom.Location = new System.Drawing.Point(226, 584);
+            this.pnlBottom.Location = new System.Drawing.Point(226, 625);
             this.pnlBottom.Name = "pnlBottom";
-            this.pnlBottom.Size = new System.Drawing.Size(842, 47);
+            this.pnlBottom.Size = new System.Drawing.Size(859, 54);
             this.pnlBottom.TabIndex = 1;
             // 
             // pnlTop
@@ -243,14 +245,14 @@
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlTop.Location = new System.Drawing.Point(226, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(842, 584);
+            this.pnlTop.Size = new System.Drawing.Size(859, 625);
             this.pnlTop.TabIndex = 2;
             // 
             // frmDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1068, 631);
+            this.ClientSize = new System.Drawing.Size(1085, 679);
             this.Controls.Add(this.pnlTop);
             this.Controls.Add(this.pnlBottom);
             this.Controls.Add(this.pnlLeft);
