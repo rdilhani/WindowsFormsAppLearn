@@ -40,7 +40,7 @@ namespace WindowsFormsAppLearn
 
         private void btnItems_Click(object sender, EventArgs e)
         {
-          //  loadForm(new frmItems());
+           loadForm(new frmItem());
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
