@@ -122,7 +122,7 @@ namespace WindowsFormsAppLearn
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
-        {
+        {          
             con.Open();
             SqlCommand cmd = new SqlCommand("Delete item where Code=@Code", con);
             cmd.Parameters.AddWithValue("@Code", txtItemCode.Text);
