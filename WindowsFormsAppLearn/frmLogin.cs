@@ -74,6 +74,8 @@ namespace WindowsFormsAppLearn
 
         private void btnSignup_Click(object sender, EventArgs e)
         {
+            // Check if the username and password fields are not empty
+        
             if (isValidAll())
             {
                 con.Open();
