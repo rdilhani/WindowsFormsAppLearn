@@ -32,6 +32,7 @@ namespace WindowsFormsAppLearn
             {
                 this.pnlTop.Controls.RemoveAt(0);
             }
+            frm.FormBorderStyle = FormBorderStyle.None;
             frm.TopLevel = false;
             frm.Dock = DockStyle.Fill;
             pnlTop.Controls.Add(frm);
@@ -51,6 +52,11 @@ namespace WindowsFormsAppLearn
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            loadForm(new frmSales());
         }
     }
 }

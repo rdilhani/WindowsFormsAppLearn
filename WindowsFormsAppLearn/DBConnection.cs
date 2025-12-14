@@ -7,7 +7,7 @@ namespace WindowsFormsAppLearn
         SqlConnection con = new SqlConnection();
 
         public SqlConnection getDBConnection() {
-            con=new SqlConnection("Data Source=DESKTOP-5KH52MH;Initial Catalog=DIT72;Integrated Security=True;Pooling=False");
+            con=new SqlConnection("Data Source=DESKTOP-5KH52MH;Initial Catalog=POSSample;Integrated Security=True;Pooling=False");
             return con;
         }
     }

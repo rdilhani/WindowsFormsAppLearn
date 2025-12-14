@@ -34,7 +34,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnReports = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnInvoices = new System.Windows.Forms.Button();
+            this.btnSales = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnCustomer = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -114,33 +114,34 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnInvoices);
+            this.panel3.Controls.Add(this.btnSales);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 246);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(222, 59);
             this.panel3.TabIndex = 3;
             // 
-            // btnInvoices
+            // btnSales
             // 
-            this.btnInvoices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInvoices.FlatAppearance.BorderColor = System.Drawing.Color.CadetBlue;
-            this.btnInvoices.FlatAppearance.BorderSize = 2;
-            this.btnInvoices.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnInvoices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInvoices.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInvoices.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnInvoices.Image = ((System.Drawing.Image)(resources.GetObject("btnInvoices.Image")));
-            this.btnInvoices.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInvoices.Location = new System.Drawing.Point(0, 0);
-            this.btnInvoices.Margin = new System.Windows.Forms.Padding(5);
-            this.btnInvoices.Name = "btnInvoices";
-            this.btnInvoices.Padding = new System.Windows.Forms.Padding(2);
-            this.btnInvoices.Size = new System.Drawing.Size(222, 50);
-            this.btnInvoices.TabIndex = 2;
-            this.btnInvoices.Text = "    INVOICES";
-            this.btnInvoices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnInvoices.UseVisualStyleBackColor = true;
+            this.btnSales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSales.FlatAppearance.BorderColor = System.Drawing.Color.CadetBlue;
+            this.btnSales.FlatAppearance.BorderSize = 2;
+            this.btnSales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSales.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnSales.Image = ((System.Drawing.Image)(resources.GetObject("btnSales.Image")));
+            this.btnSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSales.Location = new System.Drawing.Point(0, 0);
+            this.btnSales.Margin = new System.Windows.Forms.Padding(5);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Padding = new System.Windows.Forms.Padding(2);
+            this.btnSales.Size = new System.Drawing.Size(222, 50);
+            this.btnSales.TabIndex = 2;
+            this.btnSales.Text = "   SALES";
+            this.btnSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSales.UseVisualStyleBackColor = true;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
             // 
             // panel2
             // 
@@ -285,7 +286,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btnReports;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button btnInvoices;
+        private System.Windows.Forms.Button btnSales;
         private System.Windows.Forms.Button btnExit;
     }
 }

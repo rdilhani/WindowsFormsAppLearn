@@ -41,29 +41,38 @@ namespace WindowsFormsAppLearn
         {
             if (isValidAll())
             {
-                con.Open();
-                string username = txtUsername.Text;
-                string password = new Encrypt().encryptData(txtPassword.Text);
-                SqlCommand cmd = new SqlCommand("select 1 from Login where username=@UN and password=@PW", con);
-                cmd.Parameters.AddWithValue("@UN", username);
-                cmd.Parameters.AddWithValue("@PW", password);
+                try
+                {
+                    con.Open();
+                    string username = txtUsername.Text.Trim();
+                    string password = new Encrypt().encryptData(txtPassword.Text.Trim());
+                    SqlCommand cmd = new SqlCommand("select 1 from Login where username=@UN and password=@PW", con);
+                    cmd.Parameters.AddWithValue("@UN", username);
+                    cmd.Parameters.AddWithValue("@PW", password);
 
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.Read())
-                {
-                    new frmDashboard().Show();
-                    this.Hide();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        new frmDashboard().Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Please enter valid user credentials...");
+                    MessageBox.Show("An error occurred while connecting to the database.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                con.Close();
+                finally
+                {
+                    con.Close();
+                }
             }
             else
             {
-                MessageBox.Show("Fill all Required Feilds!.", "Validation Error",
-            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Fill all required fields!", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

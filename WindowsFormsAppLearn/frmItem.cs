@@ -75,17 +75,26 @@ namespace WindowsFormsAppLearn
         {
             try
             {
+                Item newItem = new Item
+                {
+                    Code = txtItemCode.Text,
+                    Name = txtItemName.Text,
+                    Description = rtxtDescription.Text,
+                    Quantity = int.Parse(txtQty.Text),
+                    UnitPrice = double.Parse(txtUnitPrice.Text),
+                    Image = convertImage()
+                };
+
                 con.Open();
                 SqlCommand cmd = new SqlCommand("insert into item values (@Code,@Name,@Description,@UnitPrice,@Qty,@Image)", con);
-                cmd.Parameters.AddWithValue("@Code", txtItemCode.Text);
-                cmd.Parameters.AddWithValue("@Name", txtItemName.Text);
-                cmd.Parameters.AddWithValue("@Description", rtxtDescription.Text);
-                cmd.Parameters.AddWithValue("@UnitPrice", double.Parse(txtUnitPrice.Text));
-                cmd.Parameters.AddWithValue("@Qty", int.Parse(txtQty.Text));
-                cmd.Parameters.AddWithValue("@Image", convertImage());
+                cmd.Parameters.AddWithValue("@Code", newItem.Code);
+                cmd.Parameters.AddWithValue("@Name", newItem.Name);
+                cmd.Parameters.AddWithValue("@Description", newItem.Description);
+                cmd.Parameters.AddWithValue("@UnitPrice", newItem.UnitPrice);
+                cmd.Parameters.AddWithValue("@Qty", newItem.Quantity);
+                cmd.Parameters.AddWithValue("@Image", newItem.Image);
                 cmd.ExecuteNonQuery();
                 con.Close();
-                
 
                 MessageBox.Show("Item Added Successfully!");
                 DisplayGrid();
@@ -94,21 +103,30 @@ namespace WindowsFormsAppLearn
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             try
             {
+                Item updatedItem = new Item
+                {
+                    Code = txtItemCode.Text,
+                    Name = txtItemName.Text,
+                    Description = rtxtDescription.Text,
+                    Quantity = int.Parse(txtQty.Text),
+                    UnitPrice = double.Parse(txtUnitPrice.Text),
+                    Image = convertImage()
+                };
+
                 con.Open();
-                SqlCommand cmd = new SqlCommand("update item set Name=@Name,Description=@Description,UnitPrice=@UnitPrice,Qty=@Qty,Image=@Image)", con);
-                cmd.Parameters.AddWithValue("@Code", txtItemCode.Text);
-                cmd.Parameters.AddWithValue("@Name", txtItemName.Text);
-                cmd.Parameters.AddWithValue("@Description", rtxtDescription.Text);
-                cmd.Parameters.AddWithValue("@UnitPrice", double.Parse(txtUnitPrice.Text));
-                cmd.Parameters.AddWithValue("@Qty", int.Parse(txtQty.Text));
-                cmd.Parameters.AddWithValue("@Image", convertImage());
+                SqlCommand cmd = new SqlCommand("update item set Name=@Name,Description=@Description,UnitPrice=@UnitPrice,Qty=@Qty,Image=@Image where Code=@Code", con);
+                cmd.Parameters.AddWithValue("@Code", updatedItem.Code);
+                cmd.Parameters.AddWithValue("@Name", updatedItem.Name);
+                cmd.Parameters.AddWithValue("@Description", updatedItem.Description);
+                cmd.Parameters.AddWithValue("@UnitPrice", updatedItem.UnitPrice);
+                cmd.Parameters.AddWithValue("@Qty", updatedItem.Quantity);
+                cmd.Parameters.AddWithValue("@Image", updatedItem.Image);
                 cmd.ExecuteNonQuery();
                 con.Close();
 
@@ -136,17 +154,26 @@ namespace WindowsFormsAppLearn
             {
                 if (e.RowIndex >= 0)
                 {
-                    txtItemCode.Text = dataGridItems.SelectedRows[0].Cells[0].Value.ToString();
-                    txtItemName.Text = dataGridItems.SelectedRows[0].Cells[1].Value.ToString();
-                    rtxtDescription.Text = dataGridItems.SelectedRows[0].Cells[2].Value.ToString();
-                    txtQty.Text = dataGridItems.SelectedRows[0].Cells[3].Value.ToString();
-                    txtUnitPrice.Text = dataGridItems.SelectedRows[0].Cells[4].Value.ToString();
+                    Item selectedItem = new Item
+                    {
+                        Code = dataGridItems.SelectedRows[0].Cells[0].Value.ToString(),
+                        Name = dataGridItems.SelectedRows[0].Cells[1].Value.ToString(),
+                        Description = dataGridItems.SelectedRows[0].Cells[2].Value.ToString(),
+                        Quantity = int.Parse(dataGridItems.SelectedRows[0].Cells[3].Value.ToString()),
+                        UnitPrice = double.Parse(dataGridItems.SelectedRows[0].Cells[4].Value.ToString())
+                    };
+
+                    txtItemCode.Text = selectedItem.Code;
+                    txtItemName.Text = selectedItem.Name;
+                    rtxtDescription.Text = selectedItem.Description;
+                    txtQty.Text = selectedItem.Quantity.ToString();
+                    txtUnitPrice.Text = selectedItem.UnitPrice.ToString();
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            } 
+            }
         }
 
         private void txtItemName_TextChanged(object sender, EventArgs e)
