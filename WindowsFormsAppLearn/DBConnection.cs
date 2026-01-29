@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data.SqlClient;
 
 namespace WindowsFormsAppLearn
 {
@@ -12,7 +7,7 @@ namespace WindowsFormsAppLearn
         SqlConnection con = new SqlConnection();
 
         public SqlConnection getDBConnection() {
-            con=new SqlConnection("Data Source=DESKTOP-5KH52MH;Initial Catalog=DIT71;Integrated Security=True;Pooling=False");
+            con=new SqlConnection("Data Source=DESKTOP-5KH52MH;Initial Catalog=POSSample;Integrated Security=True;Pooling=False");
             return con;
         }
     }
